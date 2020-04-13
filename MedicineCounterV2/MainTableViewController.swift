@@ -109,7 +109,11 @@ class MainTableViewController: UITableViewController {
                 if intNum <= 2 {
                     cell.countLabel.textColor = UIColor.red
                 } else {
-                    cell.countLabel.textColor = UIColor.black
+                    if UITraitCollection.isDarkMode{
+                        cell.countLabel.textColor = UIColor.Color.liColor
+                    }else{
+                        cell.countLabel.textColor = UIColor.Color.blColor
+                    }
                 }
             }else if indexPath.section == 1{
                 let str: String = medicine1[indexPath.row]["count"]!
@@ -134,12 +138,20 @@ class MainTableViewController: UITableViewController {
                 if intNum <= 14 {
                     cell.countLabel.textColor = UIColor.red
                 }else{
-                    cell.countLabel.textColor = UIColor.black
+                    if UITraitCollection.isDarkMode{
+                        cell.countLabel.textColor = UIColor.Color.liColor
+                    }else{
+                        cell.countLabel.textColor = UIColor.Color.blColor
+                    }
                 }
                 if nummer <= 7{
                     cell.suuryouLabel.textColor = UIColor.red
                 }else{
-                    cell.suuryouLabel.textColor = UIColor.black
+                    if UITraitCollection.isDarkMode{
+                        cell.countLabel.textColor = UIColor.Color.liColor
+                    }else{
+                        cell.countLabel.textColor = UIColor.Color.blColor
+                    }
                 }
             }else if indexPath.section == 2{
                 cell.medicineLabel.text = notifiDic[indexPath.row]["text"]
@@ -250,5 +262,16 @@ class MainTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension UITraitCollection {
+
+    public static var isDarkMode: Bool {
+        if #available(iOS 13, *), current.userInterfaceStyle == .dark {
+            return true
+        }
+        return false
+    }
 
 }
